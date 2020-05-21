@@ -1,7 +1,5 @@
 # ES_optimizations
 
-## refresh_interval:
-
 ### Why refresh interval is important and what shall we do about it?
 
 Elasticsearch is near-realtime, in the sense that when you index a document, you need to wait for the next refresh for that document to appear in search. 
@@ -19,5 +17,8 @@ If you are planning to index a lot of documents and you don’t need the new inf
 ### When does my data becomes searchable?
 
 ![Lucene data representation](images/lucene_data_representation.png)
+
+The data is first ingested into an in-memory buffer which when overflows flushes the data and creates a sizeable segment. 
+When a segment size grows up, different segments are clustered together thereby actually deleting the documents marked as `deleted` earlier.
 
 
