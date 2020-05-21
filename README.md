@@ -8,7 +8,7 @@ Elasticsearch is near-realtime, in the sense that when you index a document, you
 If you are planning to index a lot of documents and you don’t need the new information to be immediately available for search, you can optimize for indexing performance over search performance by decreasing refresh frequency until you are done indexing.
 When documents are added to an ES index, they are divided into Shards. Shards of an index are in turn are composed of multiple segments.  
 
-![alt text](https://fdv.github.io/running-elasticsearch-fun-profit/003-about-lucene/images/image2.svg "Logo Title Text 1")
+![alt text](https://fdv.github.io/running-elasticsearch-fun-profit/003-about-lucene/images/image2.svg "Lucene data structure")
 
 
 These segments are created with every refresh and subsequently merged together over time in the background.
