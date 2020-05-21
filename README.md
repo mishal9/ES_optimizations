@@ -13,11 +13,11 @@ When documents are added to an ES index, they are divided into Shards. Shards of
 
 These segments are created with every refresh and subsequently merged together over time in the background.
 The lucene working behind the scenes is responsible for segment merging, but if not handled carefully it can be computationally very expensive and may cause Elasticsearch to automatically throttle indexing requests to a single thread.(ouch!)
-asd
+
 If you are planning to index a lot of documents and you don’t need the new information to be immediately available for search, you can optimize for indexing performance over search performance by decreasing refresh frequency until you are done indexing.
 
 ### When does my data becomes searchable?
 
-[logo]: https://yqintl.alicdn.com/6c7048b0f4747b67bddbf75f8b10bf97ded3a322.png "Logo Title Text 2"
+![Lucene data representation](images/lucene_data_representation.png)
 
 
