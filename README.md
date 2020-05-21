@@ -18,6 +18,6 @@ If you are planning to index a lot of documents and you don’t need the new inf
 
 ### When does my data becomes searchable?
 
-![alt text](https://yqintl.alicdn.com/6c7048b0f4747b67bddbf75f8b10bf97ded3a322.png "Data representation in Lucene")
+[logo]: https://yqintl.alicdn.com/6c7048b0f4747b67bddbf75f8b10bf97ded3a322.png "Logo Title Text 2"
 
 
