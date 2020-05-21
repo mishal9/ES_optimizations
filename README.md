@@ -16,6 +16,8 @@ The lucene working behind the scenes is responsible for segment merging, but if 
 
 If you are planning to index a lot of documents and you don’t need the new information to be immediately available for search, you can optimize for indexing performance over search performance by decreasing refresh frequency until you are done indexing.
 
+### When does my data becomes searchable?
 
+![alt text](https://yqintl.alicdn.com/6c7048b0f4747b67bddbf75f8b10bf97ded3a322.png "Data representation in Lucene")
 
 
