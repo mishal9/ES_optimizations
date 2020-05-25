@@ -200,3 +200,5 @@ indices:
 
 Please note by default ES allocates 90% heap for searching by default. So setting allocating 40% buffer size for indexing will mean 60% for search operations. Here we need to decide on optimal values for trade-off. 
 
+Finally, you will want to disable the store throttle if you’re running on enough fast disks.
+
