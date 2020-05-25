@@ -43,3 +43,9 @@ Other important things to note:
 2. If you start out with 25 primary shards, it won't help if you go beyond 25 nodes in the cluster because we won't get more primary shards.
 3. If you keep indexing documents, shards will grow beyond their size and this degrades search performance. In which case we either have to do expensive deletes or reindex with new primary shards parameter.
 
+Suggestions: 
+
+1. Rather than running expensive deletes in big index, we can retire old index in one off-peak operation.
+2. We can different number of replicas for different indices, with more indices for new data to allow better search query performance. 
+3. It is safer to reindex smaller indices at a time rather than one big index. If we are already using more than 50% of available disc on the nodes the reindexing won't happen. 
+4. We can implement Hot-warm architecture : https://www.elastic.co/blog/implementing-hot-warm-cold-in-elasticsearch-with-index-lifecycle-management 
