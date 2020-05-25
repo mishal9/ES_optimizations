@@ -172,7 +172,7 @@ boostrap.memory_lock (previously bootstrap.mlockall)
         * If a disk fails then all data on the entire array is lost, not just the single disk.
         * As Elasticsearch indexes are made up of many shards, any index that has a shard on a RAID 0 volume that suffers a disk failure can also become corrupted if no other replicas exist.
 
-* RAID0
+* RAID1
 
     [x] PROS:
 
