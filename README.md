@@ -157,7 +157,7 @@ The NIO FS type stores the shard index on the file system (maps to Lucene NIOFSD
 boostrap.memory_lock (previously bootstrap.mlockall)
 ```
 
-2. #### Storage: (Pros caveats)
+2. #### Storage: (Pros & caveats)
 
 ..1. RAID0:
 
