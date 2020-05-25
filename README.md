@@ -140,3 +140,13 @@ curl -XPUT "localhost:9200/index/_settings" -H 'Content-Type: application/json' 
 }
 '
 ```
+
+### Hardware:
+
+* Memory:
+
+Elasticsearch file system storage has an important impact on the cluster performances. After trying both ElasticSearch default_fs and mmapfs, I’ve picked up niofs for file system storage.
+
+```
+The NIO FS type stores the shard index on the file system (maps to Lucene NIOFSDirectory) using NIO. It allows multiple threads to read from the same file concurrently.
+```
