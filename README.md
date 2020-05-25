@@ -52,6 +52,14 @@ Suggestions:
 5. We can implement Hot-warm architecture :
  https://www.elastic.co/blog/implementing-hot-warm-cold-in-elasticsearch-with-index-lifecycle-management 
 
+### My approach for sharding:
+
+With an average of 2GB for 1 million documents, for example, I'll use the following:
+1. From 0 to 4 million documents per index: 1 shard.
+2. From 4 to 5 million documents per index: 2 shards, so the index can still grow without causing too much problems in the future.
+3. With more than 5 millions documents, (number of documents / 5 million) + 1 shard.
+The more data nodes you have, the better it works when you need to work with thousands of huge indexes (up to 300 million documents) in the same cluster.
+
 ### Ensuring Fault tolerance: 
 
 ![Fault tolerance architecture](https://fdv.github.io/running-elasticsearch-fun-profit/004-cluster-design/images/image1.svg)
