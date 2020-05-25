@@ -46,10 +46,14 @@ Other important things to note:
 Suggestions: 
 
 1. Rather than running expensive deletes in big index, we can retire old index in one off-peak operation.
-2. We can different number of replicas for different indices, with more indices for new data to allow better search query performance. 
-3. It is safer to reindex smaller indices at a time rather than one big index. If we are already using more than 50% of available disc on the nodes the reindexing won't happen. 
-4. 10GB shards offers the most competitive balance between allocation speed, nodes balancing, and overall cluster management.
-5. We can implement Hot-warm architecture :
+2. Multiple shards allow a better allocation between nodes.
+
+3. Small shards on multiple nodes make the cluster recovery much faster when you lose a data node or shutdown the cluster.
+4. Spreading smaller shards on lots of nodes might solve your memory management problems when running queries on a large data set.
+5. We can different number of replicas for different indices, with more indices for new data to allow better search query performance. 
+6. It is safer to reindex smaller indices at a time rather than one big index. If we are already using more than 50% of available disc on the nodes the reindexing won't happen. 
+7. 10GB shards offers the most competitive balance between allocation speed, nodes balancing, and overall cluster management.
+8. We can implement Hot-warm architecture :
  https://www.elastic.co/blog/implementing-hot-warm-cold-in-elasticsearch-with-index-lifecycle-management 
 
 #### Optimal approach for sharding: 
