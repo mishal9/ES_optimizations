@@ -170,5 +170,5 @@ boostrap.memory_lock (previously bootstrap.mlockall)
     [x] CAVEATS: 
 
         * If a disk fails then all data on the entire array is lost, not just the single disk.
-        * As Elasticsearch indexes are made up of many shards, any index that has a shard on a RAID 0 volume that suffers a disk failure can also become corrupted if no other replicas exist. This will result in permanent data loss if you do not have snapshot lifecycle management (SLM) to manage backups, or have configured Elasticsearch to have replicas.
+        * As Elasticsearch indexes are made up of many shards, any index that has a shard on a RAID 0 volume that suffers a disk failure can also become corrupted if no other replicas exist.
 
