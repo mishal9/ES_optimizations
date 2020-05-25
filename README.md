@@ -54,3 +54,5 @@ Suggestions:
 ### Ensuring Fault tolerance: 
 
 ![Cluster](https://miro.medium.com/max/2000/1*C8kbkpbsNkZd3RuWifpqHw.png)
+
+Elasticsearch nodes come under 4 flavors:
