@@ -60,6 +60,38 @@ With an average of 2GB for 1 million documents, for example, I'll use the follow
 3. With more than 5 millions documents, (number of documents / 5 million) + 1 shard.
 The more data nodes you have, the better it works when you need to work with thousands of huge indexes (up to 300 million documents) in the same cluster.
 
+Small script for resizing and moving things: 
+
+```
+#!/bin/bash
+for index in $(list of indexes); do
+  documents=$(curl -XGET http://cluster:9200/${index}/_count 2>/dev/null | cut -f 2 -d : | cut -f 1 -d ',')
+  
+  if [ $counter -lt 4000000 ]; then
+    shards=1
+  elif [ $counter -lt 5000000 ]; then
+      shards=2
+  else
+      shards=$(( $counter / 5000000 + 1)) 
+  fi
+  
+  new_version=$(( $(echo ${index} | cut -f 1 -d _) + 1)) 
+  index_name=$(echo ${index} | cut -f 2 -d _)
+  
+  curl -XPUT http://cluster:9200/${new_version}${index_name} -d '{  
+  "number_of_shards" : '${shards}' 
+  }'
+curl -XPOST http://cluster:9200/_reindex -d '{ 
+  "source": {
+    "index": "'${index}'"
+  },
+  "dest": {
+    "index": "'${new_version}${index_name}'"
+  }
+}'
+done
+```
+
 ### Ensuring Fault tolerance: 
 
 ![Fault tolerance architecture](https://fdv.github.io/running-elasticsearch-fun-profit/004-cluster-design/images/image1.svg)
