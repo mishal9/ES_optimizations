@@ -51,3 +51,6 @@ Suggestions:
 4. We can implement Hot-warm architecture :
  https://www.elastic.co/blog/implementing-hot-warm-cold-in-elasticsearch-with-index-lifecycle-management 
 
+### Ensuring Fault tolerance: 
+
+![Cluster](https://fdv.github.io/running-elasticsearch-fun-profit/001-getting-started/images/image1.svg)
