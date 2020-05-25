@@ -264,9 +264,6 @@ cd ~/opt/disk1/tools/elk/
 nohup elasticsearch/bin/elasticsearch > ~/opt/disk1/logs/sysout-elk.slog 2>&1 &             # start elasticsearch node
 ```
 
-**Health check**
-Hit this url in the address bar to check if node-1 is alive: http://34.94.11.228:9200/_cluster/health?pretty
-
 #### Elastic node 2:
 
 1. ssh into the elastic-node-2's VM instance. 
