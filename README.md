@@ -129,3 +129,14 @@ Let’s say you have 20 data nodes, and 30 indices, you can create 3 zones. Allo
 * old: 5 nodes
 
 Every day, run a crontab to reallocate your indices to their new zone. For example, move a less accessed index into the “general” zone:
+
+```
+curl -XPUT "localhost:9200/index/_settings" -H 'Content-Type: application/json' -d '
+{
+  "transient": {
+    "cluster.routing.allocation.include._zone" : "general",
+    "cluster.routing.allocation.exclude._zone" : "new,old"
+  }
+}
+'
+```
