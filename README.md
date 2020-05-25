@@ -183,5 +183,5 @@ boostrap.memory_lock (previously bootstrap.mlockall)
     [x] CAVEATS: 
 
         * Effectively a 50% reduction in total read/write performance.
-        * As Elasticsearch indexes are made up of many shards, any index that has a shard on a RAID 0 volume that suffers a disk failure can also become corrupted if no other replicas exist.
+        * Low capacity, as the RAID 1 will take 50% of your total disk capacity for data redundancy.
 
