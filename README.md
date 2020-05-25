@@ -1,4 +1,4 @@
-# Elastic cluster tuning and optimisation
+# Elastic cluster tuning and optimisations
 
 ### Why refresh interval is important and what shall we do about it?
 
