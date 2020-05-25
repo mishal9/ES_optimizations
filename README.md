@@ -34,7 +34,7 @@ As we can see if our daily ingestion rate for an index is quite high and our pri
 These factors should determine our primary shards and sharding in general: 
 
 1. Number of nodes (data nodes to be specific)
-2. Disk space allocated on each of the nodes
+2. Disk space allocated on each of the nodes (in case of disk based shard allocation)
 3. Daily ingestion rate (approximate) in the future
 
 Other important things to note:
@@ -51,4 +51,3 @@ Suggestions:
 4. We can implement Hot-warm architecture :
  https://www.elastic.co/blog/implementing-hot-warm-cold-in-elasticsearch-with-index-lifecycle-management 
 
- 
