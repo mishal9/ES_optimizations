@@ -53,7 +53,7 @@ Suggestions:
 
 ### Ensuring Fault tolerance: 
 
-![Fault tolerance architecture](https://miro.medium.com/max/2000/1*C8kbkpbsNkZd3RuWifpqHw.png)
+![Fault tolerance architecture](https://fdv.github.io/running-elasticsearch-fun-profit/004-cluster-design/images/image1.svg)
 
 Elasticsearch nodes come under 4 flavors:
 
