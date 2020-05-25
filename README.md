@@ -143,7 +143,7 @@ curl -XPUT "localhost:9200/index/_settings" -H 'Content-Type: application/json' 
 
 ### Hardware:
 
-* Memory:
+* #### Memory:
 
 Elasticsearch file system storage has an important impact on the cluster performances. We can pick up niofs for file system storage.
 
