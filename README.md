@@ -60,5 +60,5 @@ Elasticsearch nodes come under 4 flavors:
 1. Master nodes: Decides where to move data, reallocate missing data when a node leaves.
 2. Ingest nodes: Pre-processes documents before actual documents are indexed. All nodes enable ingest by default.
 3. Data nodes: Perform operations on data shards when queried/searched. 
-4. Coordinating nodes: Smart load balancers
+4. Coordinating nodes: Smart load balancers; gather data from various shards on different data during aggregations/search/CRUD.
 
