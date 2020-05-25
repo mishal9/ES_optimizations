@@ -92,6 +92,8 @@ curl -XPOST http://cluster:9200/_reindex -d '{
 done
 ```
 
+Once we've reindexed, we are ready to move the alias to right index and delete the old one. 
+
 ### Ensuring Fault tolerance: 
 
 ![Fault tolerance architecture](https://fdv.github.io/running-elasticsearch-fun-profit/004-cluster-design/images/image1.svg)
