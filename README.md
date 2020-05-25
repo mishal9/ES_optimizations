@@ -161,7 +161,7 @@ boostrap.memory_lock (previously bootstrap.mlockall)
 
 ⋅⋅1. RAID0
 
-⋅⋅⋅1. PROS:
+[x] PROS:
 
 * RAID0 offers the maximum storage space on a single file system, which is convenient when managing large shards.
 * Improves R/W performance as all disks are able to write in parallel.
