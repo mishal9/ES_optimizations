@@ -27,6 +27,10 @@ A problem can arise when force merging a huge shard. If the shard size is > half
 
 ### How to shard our data?
 
+![Sharding](images/sharding.jpg)
+
+
+As we can see if our daily ingestion rate for an index is quite high and our primary shards bit lower, we can run into trouble in a short time as all our shards for that index would've exhausted their individual capacities. 
 
 These factors should determine our primary shards and sharding in general: 
 
