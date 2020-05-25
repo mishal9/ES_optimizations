@@ -25,5 +25,21 @@ During a merge, Lucene takes 2 segments, and moves the content into a third, new
 
 A problem can arise when force merging a huge shard. If the shard size is > half of the disk size, you provably won’t be able to fully merge it, unless most of the data is made of deleted documents.
 
+### How to shard our data?
 
 ![Sharding](images/sharding.jpg)
+
+As we can see if our daily ingestion rate for an index is quite high and our primary shards bit lower, we can run into trouble in a short time as all our shards for that index would've indexed their individual capacities. 
+
+These factors should determine our primary shards and sharding in general: 
+
+1. Number of nodes (data nodes in specifics)
+2. Disk space allocated on each of the nodes
+3. Daily ingestion rate (approximate) in the future
+
+Other important things to note:
+
+1. Data is always indexed into primary shards and primary shards cannot be changed once determined at time of index creation. 
+2. If you start out with 25 primary shards, it won't help if you go beyond 25 nodes in the cluster because we won't get more primary shards.
+3. If you keep indexing documents, shards will grow beyond their size and this degrades search performance. In which case we either have to do expensive deletes or reindex with new primary shards parameter.
+
