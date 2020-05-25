@@ -159,6 +159,8 @@ boostrap.memory_lock (previously bootstrap.mlockall)
 
 2. #### Storage: (Pros & caveats)
 
+OPTIONS: 
+
 * RAID0
 
     [x] PROS:
