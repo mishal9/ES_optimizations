@@ -213,3 +213,189 @@ One more thing: when we don’t need data in realtime, but can afford waiting a 
 index:
   refresh_interval: "1m"
 ```
+
+#### Trials and tribulations:
+
+#### Elastic node 1:
+
+1. ssh into the elastic-node-1's VM instance. 
+2. Set the root directory as working directory
+3. Execute these commands
+
+```BASH
+mkdir opt
+mkdir opt/disk1
+mkdir opt/disk1/tools
+mkdir opt/disk1/tools/elk
+mkdir opt/disk1/tools/elk/logs
+mkdir opt/disk1/tools/installers
+mkdir opt/disk1/tools/installers/elastic
+mkdir opt/disk1/tools/installers/java
+mkdir opt/disk1/tools/elastic
+sudo apt-get install default-jdk                            # Installs JAVA -> prerequisite
+gsutil cp gs://elk_installers/elastic/elasticsearch-7.3.0-linux-x86_64.tar  ~/opt/disk1/tools/installers/elastic/    #Copies elasticsearch.tar.gz from cloud storage
+cd ~/opt/disk1/tools/elk
+tar -xf ~/opt/disk1/tools/installers/elastic/elasticsearch-7.3.0-linux-x86_64.tar
+cp -r elasticsearch-7.3.0 elasticsearch
+rm -rf elasticsearch-7.3.0
+
+cat <<EOF > ~/opt/disk1/temp_elk_pwd.txt                      
+"elastic"
+EOF
+
+sudo sysctl -w vm.max_map_count=262144                        # Mandatory step to increase virtual memory for elasticsearcg
+
+cd ~/opt/disk1/tools/elk/elasticsearch/bin/
+./elasticsearch-keystore create                               # Setup bootstrap password -> necessary for elastic cluster
+cat ~/opt/disk1/temp_elk_pwd.txt | ./elasticsearch-keystore add --stdin "bootstrap.password"      
+
+cd ~/opt/disk1/tools/elk/elasticsearch/config
+gsutil cp gs://elk_installers/elastic/jvm_new.options .
+gsutil cp gs://elk_installers/elastic/elasticsearch-1.yml .
+rm elasticsearch.yml 
+mv elasticsearch-1.yml elasticsearch.yml                      # Update elasticsearch.yml with appropriate properties
+rm jvm.options
+mv jvm_new.options jvm.options                                # Updated heap size in jvm.options
+
+cd ~/opt/disk1/
+mkdir logs
+
+cd ~/opt/disk1/tools/elk/
+nohup elasticsearch/bin/elasticsearch > ~/opt/disk1/logs/sysout-elk.slog 2>&1 &             # start elasticsearch node
+```
+
+**Health check**
+Hit this url in the address bar to check if node-1 is alive: http://34.94.11.228:9200/_cluster/health?pretty
+
+#### Elastic node 2:
+
+1. ssh into the elastic-node-2's VM instance. 
+2. Set the root directory as working directory
+3. Execute these commands
+
+```BASH
+mkdir opt
+mkdir opt/disk1
+mkdir opt/disk1/tools
+mkdir opt/disk1/tools/elk
+mkdir opt/disk1/tools/elk/logs
+mkdir opt/disk1/tools/installers
+mkdir opt/disk1/tools/installers/elastic
+mkdir opt/disk1/tools/installers/java
+mkdir opt/disk1/tools/elastic
+sudo apt-get install default-jdk                            # Installs JAVA -> prerequisite
+gsutil cp gs://elk_installers/elastic/elasticsearch-7.3.0-linux-x86_64.tar  ~/opt/disk1/tools/installers/elastic/    #Copies elasticsearch.tar.gz from cloud storage
+cd ~/opt/disk1/tools/elk
+tar -xf ~/opt/disk1/tools/installers/elastic/elasticsearch-7.3.0-linux-x86_64.tar
+cp -r elasticsearch-7.3.0 elasticsearch
+rm -rf elasticsearch-7.3.0
+
+cat <<EOF > ~/opt/disk1/temp_elk_pwd.txt                      
+"elastic"
+EOF
+
+sudo sysctl -w vm.max_map_count=262144                        # Mandatory step to increase virtual memory for elasticsearcg
+
+cd ~/opt/disk1/tools/elk/elasticsearch/bin/
+./elasticsearch-keystore create                               # Setup bootstrap password -> necessary for elastic cluster
+cat ~/opt/disk1/temp_elk_pwd.txt | ./elasticsearch-keystore add --stdin "bootstrap.password"      
+
+cd ~/opt/disk1/tools/elk/elasticsearch/config
+gsutil cp gs://elk_installers/elastic/jvm_new.options .
+gsutil cp gs://elk_installers/elastic/elasticsearch-2.yml .
+rm elasticsearch.yml 
+mv elasticsearch-2.yml elasticsearch.yml                      # Update elasticsearch.yml with appropriate properties
+rm jvm.options
+mv jvm_new.options jvm.options                                # Updated heap size in jvm.options
+
+cd ~/opt/disk1/
+mkdir logs
+
+cd ~/opt/disk1/tools/elk/
+nohup elasticsearch/bin/elasticsearch > ~/opt/disk1/logs/sysout-elk.slog 2>&1 &             # start elasticsearch node
+```
+
+**Health check**
+Hit this url in the address bar to check if node-2 is alive: http://34.94.89.6:9200/_cluster/health?pretty
+
+#### Elastic node 3:
+1. ssh into the elastic-node-3's VM instance. 
+2. Set the root directory as working directory
+3. Execute these commands
+
+```BASH
+mkdir opt
+mkdir opt/disk1
+mkdir opt/disk1/tools
+mkdir opt/disk1/tools/elk
+mkdir opt/disk1/tools/elk/logs
+mkdir opt/disk1/tools/installers
+mkdir opt/disk1/tools/installers/elastic
+mkdir opt/disk1/tools/installers/java
+mkdir opt/disk1/tools/elastic
+sudo apt-get install default-jdk                            # Installs JAVA -> prerequisite
+gsutil cp gs://elk_installers/elastic/elasticsearch-7.3.0-linux-x86_64.tar  ~/opt/disk1/tools/installers/elastic/    #Copies elasticsearch.tar.gz from cloud storage
+cd ~/opt/disk1/tools/elk
+tar -xf ~/opt/disk1/tools/installers/elastic/elasticsearch-7.3.0-linux-x86_64.tar
+cp -r elasticsearch-7.3.0 elasticsearch
+rm -rf elasticsearch-7.3.0
+
+cat <<EOF > ~/opt/disk1/temp_elk_pwd.txt                      
+"elastic"
+EOF
+
+sudo sysctl -w vm.max_map_count=262144                        # Mandatory step to increase virtual memory for elasticsearcg
+
+cd ~/opt/disk1/tools/elk/elasticsearch/bin/
+./elasticsearch-keystore create                               # Setup bootstrap password -> necessary for elastic cluster
+cat ~/opt/disk1/temp_elk_pwd.txt | ./elasticsearch-keystore add --stdin "bootstrap.password"      
+
+cd ~/opt/disk1/tools/elk/elasticsearch/config
+gsutil cp gs://elk_installers/elastic/jvm_new.options .
+gsutil cp gs://elk_installers/elastic/elasticsearch-3.yml .
+rm elasticsearch.yml 
+mv elasticsearch-3.yml elasticsearch.yml                      # Update elasticsearch.yml with appropriate properties
+rm jvm.options
+mv jvm_new.options jvm.options                                # Updated heap size in jvm.options
+
+cd ~/opt/disk1/
+mkdir logs
+
+cd ~/opt/disk1/tools/elk/
+nohup elasticsearch/bin/elasticsearch > ~/opt/disk1/logs/sysout-elk.slog 2>&1 &             # start elasticsearch node
+```
+
+
+#### Kibana
+
+1. ssh into the kibana's VM instance. 
+2. Set the root directory as working directory
+3. Execute these commands
+
+```BASH
+mkdir opt
+mkdir opt/disk1
+mkdir opt/disk1/tools
+mkdir opt/disk1/tools/elk
+mkdir opt/disk1/tools/elk/logs
+mkdir opt/disk1/tools/elk/logs/kibana
+mkdir opt/disk1/tools/installers
+mkdir opt/disk1/tools/installers/elastic
+mkdir opt/disk1/tools/installers/java
+mkdir opt/disk1/tools/elastic
+sudo apt-get install default-jdk
+gsutil cp gs://elk_installers/kibana/kibana-7.3.0-linux-x86_64.tar  ~/opt/disk1/tools/installers/elastic/
+cd ~/opt/disk1/tools/elk
+tar -xf ~/opt/disk1/tools/installers/elastic/kibana-7.3.0-linux-x86_64.tar
+cp -r kibana-7.3.0-linux-x86_64 kibana
+rm -rf kibana-7.3.0-linux-x86_64
+
+cd ~/opt/disk1/tools/elk/kibana/config
+rm kibana.yml 
+gsutil cp gs://elk_installers/kibana/kibana.yml .
+
+mkdir ~/opt/disk1/logs
+
+cd ~/opt/disk1/tools/elk/
+kibana/bin/kibana &                                                 # Start kibana server
+```
