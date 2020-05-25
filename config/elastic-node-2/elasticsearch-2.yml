@@ -1,0 +1,31 @@
+cluster.name: project                                                   # Name of cluster
+cluster.initial_master_nodes:                                           # Master-eligible nodes to avoid split-brain problem
+  - node-1
+  - node-2
+  - node-3
+
+node.name: node-2                                                       # Name of the node
+node.master: true                                                       # Master-eligible node
+node.data: true                                                         # Eligible as data ingest node
+node.ingest: true                                                           
+node.ml: false                                                          # Disable ML on node
+
+path.data: ~/opt/disk1/store/elastic                                  
+path.logs: ~/opt/disk1/tools/elk/logs/elasticsearch                     # Re-direct logs to a directory 
+
+network.host: "10.168.0.7"                                              # Enter elastic node 2's VM instance internal IP
+transport.tcp.port: 9300                                                # Port for internal communication among nodes
+
+http.port: 9200                                                         # Port for external communication
+
+discovery.seed_hosts:                                                   
+  - 10.168.0.2:9300
+  - 10.168.0.7:9300
+  - 10.168.0.8:9300
+
+discovery.zen.minimum_master_nodes: 2                                   # Require voting from atleast two nodes to elect master
+
+xpack.monitoring.enabled: true
+xpack.monitoring.collection.enabled: true                               # Collect node metadata for health checks
+xpack.security.enabled: false                                           # SSL/TLS , auth disabled
+xpack.license.self_generated.type: "trial"                              # Start cluster in trial mode; enable premium features

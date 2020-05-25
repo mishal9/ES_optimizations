@@ -1,0 +1,19 @@
+server.port: 5255                                                             # Server port for external communication
+server.host: 0.0.0.0
+server.name: "kibana-server"                                                  # Server name
+csp.strict: true
+elasticsearch.hosts: ["http://10.168.0.2:9200"]                               # For connection to elasticsearch cluster
+elasticsearch.username: "elastic"                                             # Authentication with default user and
+elasticsearch.password: "elastic"                                             # bootstrap.password
+
+
+#pid.file: ~/opt/disk1/tools/elk/kibana/kibana.pid
+#logging.dest: ~/opt/disk1/kibana.log                                          # Logging
+logging.quiet: true
+logging.verbose: false
+
+xpack.reporting.enabled: true   
+xpack.reporting.encryptionKey: "kibana-report"
+xpack.infra.sources.default.logAlias: "logs-*"
+xpack.monitoring.enabled: true                                                # Collect kibana metadata for health checks
+xpack.security.enabled: false                                                 # Disable ssl/tls 
