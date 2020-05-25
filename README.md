@@ -191,3 +191,12 @@ boostrap.memory_lock (previously bootstrap.mlockall)
 Depending on your throughput, you might need a large indexing buffer. The indexing buffer is a bunch of memory that stores the data to index. 
 
 Elasticsearch default index buffer is 10% of the memory allocated to the heap. But for heavy indexing operations, you might want to raise it to 30%, if not 40%.
+
+```
+indices:
+  memory:
+    index_buffer_size: "40%"
+```
+
+Please note by default ES allocates 90% heap for searching by default. So setting allocating 40% buffer size for indexing will mean 60% for search operations. Here we need to decide on optimal values for trade-off. 
+
