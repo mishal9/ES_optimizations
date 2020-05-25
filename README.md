@@ -214,7 +214,7 @@ index:
   refresh_interval: "1m"
 ```
 
-#### Trials and tribulations:
+#### Trials and tribulations: (Execution on GCP VM instances)
 
 #### Elastic node 1:
 
