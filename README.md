@@ -207,5 +207,9 @@ store:
   throttle.type: 'none'
 ```
 
+One more thing: when we don’t need data in realtime, but can afford waiting a bit, we can cut your cluster a little slack by raising the indices refresh interval.
 
-
+```
+index:
+  refresh_interval: "1m"
+```
