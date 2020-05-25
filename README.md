@@ -33,7 +33,7 @@ As we can see if our daily ingestion rate for an index is quite high and our pri
 
 These factors should determine our primary shards and sharding in general: 
 
-1. Number of nodes (data nodes in specifics)
+1. Number of nodes (data nodes to be specific)
 2. Disk space allocated on each of the nodes
 3. Daily ingestion rate (approximate) in the future
 
