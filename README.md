@@ -127,4 +127,5 @@ Let’s say you have 20 data nodes, and 30 indices, you can create 3 zones. Allo
 * new: 15 nodes
 * general: 10 nodes
 * old: 5 nodes
+
 Every day, run a crontab to reallocate your indices to their new zone. For example, move a less accessed index into the “general” zone:
