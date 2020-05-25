@@ -186,3 +186,8 @@ boostrap.memory_lock (previously bootstrap.mlockall)
         * Low capacity, as the RAID 1 will take 50% 
         of your total disk capacity for data redundancy.
 
+### Further tuning?
+
+Depending on your throughput, you might need a large indexing buffer. The indexing buffer is a bunch of memory that stores the data to index. 
+
+Elasticsearch default index buffer is 10% of the memory allocated to the heap. But for heavy indexing operations, you might want to raise it to 30%, if not 40%.
