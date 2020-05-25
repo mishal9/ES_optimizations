@@ -176,12 +176,12 @@ boostrap.memory_lock (previously bootstrap.mlockall)
 
     [x] PROS:
 
-        * RAID0 offers the maximum storage space on a single file system, which is convenient when managing large shards.
-        * Improves R/W performance as all disks are able to write in parallel.
-        * High capacity as the array can use all of the disk capacity for storage. 
+        * High data protection as all data is mirrored.
+        * Easy recovery when a disk fails -- just replacing the failed disk.
+        * Elastic sees the array as a single disk.
 
     [x] CAVEATS: 
 
-        * If a disk fails then all data on the entire array is lost, not just the single disk.
+        * Effectively a 50% reduction in total read/write performance
         * As Elasticsearch indexes are made up of many shards, any index that has a shard on a RAID 0 volume that suffers a disk failure can also become corrupted if no other replicas exist.
 
