@@ -159,4 +159,4 @@ boostrap.memory_lock (previously bootstrap.mlockall)
 
 2. #### Storage:
 
-* 
+* RAID0 offers the maximum storage space on a single file system, which is convenient when managing large shards.
