@@ -20,4 +20,6 @@ If you are planning to index a lot of documents and you don’t need the new inf
 
 ![Lucene data representation](images/lucene_data_representation.png)
 
+### Why choosing primary shards is important? 
 
+![Sharding](images/sharding.jpg)
