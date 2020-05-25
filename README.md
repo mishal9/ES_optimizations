@@ -183,5 +183,6 @@ boostrap.memory_lock (previously bootstrap.mlockall)
     [x] CAVEATS: 
 
         * Effectively a 50% reduction in total read/write performance.
-        * Low capacity, as the RAID 1 will take 50% of your total disk capacity for data redundancy.
+        * Low capacity, as the RAID 1 will take 50% 
+        of your total disk capacity for data redundancy.
 
