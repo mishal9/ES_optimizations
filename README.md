@@ -50,3 +50,5 @@ Suggestions:
 3. It is safer to reindex smaller indices at a time rather than one big index. If we are already using more than 50% of available disc on the nodes the reindexing won't happen. 
 4. We can implement Hot-warm architecture :
  https://www.elastic.co/blog/implementing-hot-warm-cold-in-elasticsearch-with-index-lifecycle-management 
+
+ 
