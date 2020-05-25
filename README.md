@@ -53,4 +53,4 @@ Suggestions:
 
 ### Ensuring Fault tolerance: 
 
-![Cluster](https://fdv.github.io/running-elasticsearch-fun-profit/001-getting-started/images/image1.svg)
+![Cluster](https://miro.medium.com/max/2000/1*C8kbkpbsNkZd3RuWifpqHw.png)
