@@ -145,13 +145,13 @@ curl -XPUT "localhost:9200/index/_settings" -H 'Content-Type: application/json' 
 
 1. #### Memory:
 
-* *Elasticsearch file system storage has an important impact on the cluster performances. We can pick up niofs for file system storage.
+* Elasticsearch file system storage has an important impact on the cluster performances. We can pick up niofs for file system storage.
 
 ```
 The NIO FS type stores the shard index on the file system (maps to Lucene NIOFSDirectory) using NIO. It allows multiple threads to read from the same file concurrently.
 ```
 
-We might also want to commit the exact amount of memory you want to allocate to the heap at startup. This prevents the node from swapping when trying to allocate the memory it needs because no more memory is available.
+* We might also want to commit the exact amount of memory you want to allocate to the heap at startup. This prevents the node from swapping when trying to allocate the memory it needs because no more memory is available.
 
 ```
 boostrap.memory_lock (previously bootstrap.mlockall)
