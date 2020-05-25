@@ -68,3 +68,5 @@ When we create or change an Elasticsearch cluster, we can select between one and
 1. A single availability zone is suitable for testing and development
 2. Two availability zones are suitable for production use (with a tiebreaker)
 3. Three availability zones are great for mission critical environments
+
+When deploying clusters in multiple availability zones, shard allocation awareness ensures that primary shards and their replica shards are spread across different zones to minimize the risk of losing all shard copies at the same time.
