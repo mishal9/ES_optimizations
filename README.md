@@ -52,7 +52,7 @@ Suggestions:
 5. We can implement Hot-warm architecture :
  https://www.elastic.co/blog/implementing-hot-warm-cold-in-elasticsearch-with-index-lifecycle-management 
 
-### Optimal approach for sharding:
+#### Optimal approach for sharding: 
 
 With an average of 2GB for 1 million documents, for example, I'll use the following:
 1. From 0 to 4 million documents per index: 1 shard.
