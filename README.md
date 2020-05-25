@@ -115,3 +115,16 @@ When we create or change an Elasticsearch cluster, we can select between one and
 3. Three availability zones are great for mission critical environments
 
 When deploying clusters in multiple availability zones, shard allocation awareness ensures that primary shards and their replica shards are spread across different zones to minimize the risk of losing all shard copies at the same time.
+
+#### Optimising shard allocation:
+
+Once you use rack awareness, it might be interesting to optimise shard allocations using elasticsearch zones.
+
+For example, if you have indices that are accessed more frequently than others, you might want to allocate more data nodes to those indices while the less frequently accessed indices have less resources allocated. This is extremely efficient with timestamped indices.
+
+Let’s say you have 20 data nodes, and 30 indices, you can create 3 zones. Allocate your 30 nodes to these zones according to the needed resources:
+
+new: 15 nodes
+general: 10 nodes
+old: 5 nodes
+Every day, run a crontab to reallocate your indices to their new zone. For example, move a less accessed index into the “general” zone:
