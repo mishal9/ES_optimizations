@@ -202,3 +202,5 @@ Please note by default ES allocates 90% heap for searching by default. So settin
 
 Finally, we might want to disable the store throttle if we’re running on enough fast disks.
 
+
+
