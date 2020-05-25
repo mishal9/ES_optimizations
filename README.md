@@ -63,3 +63,8 @@ Elasticsearch nodes come under 4 flavors:
 3. Data nodes: Perform operations on data shards when queried/searched. 
 4. Coordinating nodes: Smart load balancers; gather data from various shards on different data during aggregations/search/CRUD.
 
+When we create or change an Elasticsearch cluster, we can select between one and three availability zones as:
+
+1. A single availability zone is suitable for testing and development
+2. Two availability zones are suitable for production use (with a tiebreaker)
+3. Three availability zones are great for mission critical environments
