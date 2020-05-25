@@ -157,6 +157,18 @@ The NIO FS type stores the shard index on the file system (maps to Lucene NIOFSD
 boostrap.memory_lock (previously bootstrap.mlockall)
 ```
 
-2. #### Storage:
+2. #### Storage: (Pros caveats)
+
+1. RAID0:
+
+1. PROS:
 
 * RAID0 offers the maximum storage space on a single file system, which is convenient when managing large shards.
+* Improves R/W performance as all disks are able to write in parallel.
+* High capacity as the array can use all of the disk capacity for storage. 
+
+2. CAVEATS: 
+
+* If a disk fails then all data on the entire array is lost, not just the single disk.
+* As Elasticsearch indexes are made up of many shards, any index that has a shard on a RAID 0 volume that suffers a disk failure can also become corrupted if no other replicas exist. This will result in permanent data loss if you do not have snapshot lifecycle management (SLM) to manage backups, or have configured Elasticsearch to have replicas.
+
