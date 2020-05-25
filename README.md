@@ -47,7 +47,6 @@ Suggestions:
 
 1. Rather than running expensive deletes in big index, we can retire old index in one off-peak operation.
 2. Multiple shards allow a better allocation between nodes.
-
 3. Small shards on multiple nodes make the cluster recovery much faster when you lose a data node or shutdown the cluster.
 4. Spreading smaller shards on lots of nodes might solve your memory management problems when running queries on a large data set.
 5. We can different number of replicas for different indices, with more indices for new data to allow better search query performance. 
